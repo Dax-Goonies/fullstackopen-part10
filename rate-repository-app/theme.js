@@ -1,0 +1,31 @@
+import { Platform } from 'react-native';
+
+// Custom theme
+const theme = {
+  colors: {
+    primary: '#0366d6',
+    textPrimary: '#24292e',
+    textSecondary: '#586069',
+    grey: '#e1e4e8',
+    error: '#d73a4a',
+    white: '#ffffff',
+  },
+  fontSizes: {
+    body: 14,
+    subheading: 16,
+  },
+  fonts: {
+    main: Platform.select({
+      android: 'Roboto',
+      ios: 'Arial',
+      default: 'System',
+    }),
+  },
+  fontWeights: {
+    normal: '400',
+    medium: '500',
+    bold: '700',
+  },
+};
+
+export default theme;
