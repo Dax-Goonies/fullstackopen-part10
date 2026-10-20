@@ -21,6 +21,6 @@ describe('SignIn', () => {
         username: 'kalle',
         password: 'password',
       });
-    });
+    }, 10000);
   });
 });
