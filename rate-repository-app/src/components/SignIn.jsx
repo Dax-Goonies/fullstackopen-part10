@@ -2,6 +2,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-native';
+import { useState } from 'react';
 
 import useSignIn from '../hooks/useSignIn';
 import { commonStyles } from '../styles/common';
@@ -26,7 +27,7 @@ const validationSchema = yup.object().shape({
 });
 
 // Sign in container: Get access to creating reviews, and see own reviews
-export const SignInForm = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit, error }) => {
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -56,6 +57,7 @@ export const SignInForm = ({ onSubmit }) => {
       {formik.touched.password && formik.errors.password &&
         <Text style={commonStyles.error}>{formik.errors.password}</Text>
       }
+      {error && <Text style={commonStyles.error}>{error}</Text>}
       <Pressable onPress={formik.handleSubmit}>
         <Text style={commonStyles.button}>Sign in</Text>
       </Pressable>
@@ -67,6 +69,7 @@ export const SignInForm = ({ onSubmit }) => {
 const SignIn = () => {
   const [signIn] = useSignIn();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const onSubmit = async (values) => {
     try {
@@ -74,10 +77,12 @@ const SignIn = () => {
       navigate('/');
     } catch (e) {
       console.log(e);
+      const message = e.graphQLErrors?.[0]?.message || 'Invalid username or password';
+      setError(message);
     }
   };
 
-  return <SignInForm onSubmit={onSubmit} />;
+  return <SignInForm onSubmit={onSubmit} error={error} />;
 };
 
 export default SignIn;
