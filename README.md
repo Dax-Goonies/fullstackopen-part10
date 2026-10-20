@@ -6,9 +6,9 @@ A mobile application for rating GitHub repositories. Users can browse GitHub-sty
 
 You can try the app on your phone by scanning the following QR code with Expo Go:
 
-<!-- QR code screenshot goes here -->
+![QR code for testing the app](./qr-code.svg)
 
-**Note on Android:** There is a currently open, confirmed bug in Expo Go on Android (SDK 57) that prevents EAS Update downloads from completing ([expo/expo#50139](https://github.com/expo/expo/issues/50139)). The same update loads correctly on iOS. If the QR code fails to load on an Android device, this known platform issue is the likely cause rather than an issue with the app itself.
+**Note on Android:** Expo Go on Android (client version 57.0.9) has a confirmed, open bug that prevents EAS Update downloads from completing ([expo/expo#50139](https://github.com/expo/expo/issues/50139)). The Expo team has identified the root cause and a fix is pending release in a future Expo Go build. The app itself works correctly and has been verified via an Android emulator with a newer Expo Go build, as well as locally. If the QR code fails to load on an Android device with Expo Go 57.0.9, this known upstream issue is the cause, not the app.
 
 ## Features
 

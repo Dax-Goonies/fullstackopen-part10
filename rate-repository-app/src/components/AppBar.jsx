@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: theme.colors.textPrimary,
-    paddingTop: 27,
+    paddingTop: 50,
     paddingBottom: 12,
     paddingHorizontal: 12
   },
